@@ -20,7 +20,8 @@
 #ifdef __linux__
     typedef int UDP_SOCKET;
 #elif _WIN32
-    typedef SOKET UDP_SOCKET;
+    typedef SOCKET UDP_SOCKET;
+    typedef int socklen_t;
 #endif
 
 #endif //N4GD_SOCKETINTERNAL_H
