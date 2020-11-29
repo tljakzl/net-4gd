@@ -2,7 +2,7 @@
 
 #pragma once
 #include "Ipv4.h"
-#include <WinSock2.h>
+#include "SocketInternal.h"
 
 extern bool InitializeSockets();
 extern void ShutdownSockets();
@@ -22,5 +22,5 @@ public:
 
 private:
 
-    SOCKET _socket{INVALID_SOCKET};
+    UDP_SOCKET _socket{INVALID_SOCKET_UDP};
 };

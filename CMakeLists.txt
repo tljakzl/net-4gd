@@ -18,12 +18,16 @@ add_library(n4gd
         ${SRC_DIR}/pch.cpp
         ${N4GD_DIR}/Ipv4.h
         ${N4GD_DIR}/UdpSocket.h
-        ${N4GD_DIR}/pch.h)
+        ${N4GD_DIR}/pch.h include/n4gd/SocketInternal.h)
 
 if(WIN32)
     target_link_libraries(n4gd wsock32 ws2_32)
     target_sources(n4gd PRIVATE ${SRC_DIR}/Socket/Platform/UdpSocket_WIN32.cpp)
-endif(WIN32)
+elseif(APPLE)
+    target_sources(n4gd PRIVATE ${SRC_DIR}/Socket/Platform/UdpSocket_APPLE.cpp)
+elseif(UNIX AND NOT APPLE)
+    target_sources(n4gd PRIVATE ${SRC_DIR}/Socket/Platform/UdpSocket_UNIX.cpp)
+endif()
 
 
 target_include_directories(n4gd PRIVATE ${INCLUDE_DIR})

@@ -1,11 +1,12 @@
 //Ѫ Ӕ Ѫ
 #include <WinSock2.h>
+#include <n4gd/SocketInternal.h>
 
-bool UdpSocketUnlock(SOCKET& socket) {
+bool UdpSocketUnlock(UDP_SOCKET& socket) {
     DWORD nonBlocking = 1;
     return ioctlsocket(socket, FIONBIO, &nonBlocking) == 0;
 }
-void UdpSocketClose(SOCKET& socket) {
+void UdpSocketClose(UDP_SOCKET& socket) {
     closesocket(socket);
 }
 

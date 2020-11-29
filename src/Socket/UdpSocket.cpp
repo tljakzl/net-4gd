@@ -3,13 +3,13 @@
 #include <n4gd/pch.h>
 #include <n4gd/UdpSocket.h>
 
-extern bool UdpSocketUnlock(SOCKET& socket);
-extern void UdpSocketClose(SOCKET& socket);
+extern bool UdpSocketUnlock(UDP_SOCKET& socket);
+extern void UdpSocketClose(UDP_SOCKET& socket);
 
 bool UdpSocket::Open(unsigned short port)
 {
     _socket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-    if (_socket == INVALID_SOCKET) {
+    if (_socket == INVALID_SOCKET_UDP) {
         std::cerr << "Failed to create UDP socket!\n";
         return false;
     }
@@ -36,9 +36,9 @@ bool UdpSocket::Open(unsigned short port)
 
 void UdpSocket::Close()
 {
-    if (_socket != INVALID_SOCKET) {
+    if (_socket != INVALID_SOCKET_UDP) {
         UdpSocketClose(_socket);
-        _socket = INVALID_SOCKET;
+        _socket = INVALID_SOCKET_UDP;
     }
 }
 
@@ -64,7 +64,7 @@ int UdpSocket::Receive(Ipv4& sender, void* data, int size) const
     }
 
     sockaddr_in from{};
-    int fromSize = sizeof(from);
+    socklen_t fromSize = sizeof(from);
     int receivedBytes = recvfrom(_socket, reinterpret_cast<char*>(data), size, 0, reinterpret_cast<sockaddr*>(&from), &fromSize);
 
     if (receivedBytes <= 0) {
@@ -79,7 +79,7 @@ int UdpSocket::Receive(Ipv4& sender, void* data, int size) const
 
 bool UdpSocket::IsOpen() const
 {
-    return _socket != INVALID_SOCKET;
+    return _socket != INVALID_SOCKET_UDP;
 }
 
 UdpSocket::~UdpSocket()
