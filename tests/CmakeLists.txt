@@ -1,0 +1,5 @@
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/lib/googletest)
+add_executable(testMain main.cpp)
+target_include_directories(testMain PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/googletest/googletest/include)
+target_link_libraries(testMain n4gd)
+target_link_libraries(testMain gtest)
