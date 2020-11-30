@@ -6,7 +6,7 @@
 extern bool UdpSocketUnlock(UDP_SOCKET& socket);
 extern void UdpSocketClose(UDP_SOCKET& socket);
 
-bool UdpSocket::Open(unsigned short port)
+bool UdpSocket::Open(Ipv4::PORT port)
 {
     _socket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if (_socket == INVALID_SOCKET_UDP) {

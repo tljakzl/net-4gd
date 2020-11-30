@@ -14,7 +14,7 @@ public:
     UdpSocket() = default;
     ~UdpSocket();
 
-    bool Open(unsigned short port);
+    bool Open(Ipv4::PORT port);
     void Close();
     bool IsOpen() const;
     bool Send(const Ipv4& destination, const void* data, int size) const;
