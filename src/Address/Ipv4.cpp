@@ -2,12 +2,6 @@
 
 #include <n4gd/Ipv4.h>
 
-#define OCTED_BYTE 8
-
-constexpr Ipv4::OCTET OFFSET_A = 3 * OCTED_BYTE;
-constexpr Ipv4::OCTET OFFSET_B = 2 * OCTED_BYTE;
-constexpr Ipv4::OCTET OFFSET_C = 1 * OCTED_BYTE;
-
 Ipv4::Ipv4(Ipv4::OCTET a, Ipv4::OCTET b, Ipv4::OCTET c, Ipv4::OCTET d, Ipv4::PORT port)
 : _address((a << OFFSET_A ) | ( b << OFFSET_B ) | ( c << OFFSET_C ) | d)
 , _port(port)
@@ -58,4 +52,15 @@ Ipv4::OCTET Ipv4::GetC() const
 Ipv4::OCTET Ipv4::GetD() const
 {
     return _address;
+}
+
+std::string Ipv4::GetAddressString() const
+{
+    auto dot = std::string(".");
+    auto a = std::to_string(GetA());
+    auto b = std::to_string(GetB());
+    auto c = std::to_string(GetC());
+    auto d = std::to_string(GetD());
+
+    return a.append(dot).append(b).append(dot).append(c).append(dot).append(d);
 }

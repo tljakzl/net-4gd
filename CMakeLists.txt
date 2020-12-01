@@ -1,13 +1,11 @@
 cmake_minimum_required(VERSION 3.17)
 set(CMAKE_CXX_STANDARD 17)
-project(n4gd)
+project(n4gd VERSION 0.1 DESCRIPTION "lib for net interaction")
 
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(N4GD_DIR ${INCLUDE_DIR}/n4gd)
 set(CMAKE_CXX_STANDARD 17)
-
-project(n4gd VERSION 0.1 DESCRIPTION "lib for net interaction")
 
 include_directories(PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/tests)
@@ -18,7 +16,7 @@ add_library(n4gd
         ${SRC_DIR}/pch.cpp
         ${N4GD_DIR}/Ipv4.h
         ${N4GD_DIR}/UdpSocket.h
-        ${N4GD_DIR}/pch.h include/n4gd/SocketInternal.h)
+        ${N4GD_DIR}/pch.h include/n4gd/SocketInternal.h include/n4gd/Connection.h src/Connection.cpp)
 
 if(WIN32)
     target_link_libraries(n4gd wsock32 ws2_32)

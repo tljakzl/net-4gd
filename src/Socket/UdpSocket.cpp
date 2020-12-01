@@ -30,12 +30,14 @@ bool UdpSocket::Open(Ipv4::PORT port)
         Close();
         return false;
     }
+    _port = port;
 
     return true;
 }
 
 void UdpSocket::Close()
 {
+    _port = 0;
     if (_socket != INVALID_SOCKET_UDP) {
         UdpSocketClose(_socket);
         _socket = INVALID_SOCKET_UDP;
@@ -85,4 +87,9 @@ bool UdpSocket::IsOpen() const
 UdpSocket::~UdpSocket()
 {
     Close();
+}
+
+Ipv4::PORT UdpSocket::GetPort() const
+{
+    return _port;
 }
