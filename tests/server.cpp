@@ -5,7 +5,7 @@
 
 #define LOG_SERVER(x) std::cout <<"[SERVER] "<< x
 
-const int ServerPort = 30000;
+const int ServerPort = 7777;
 const int ClientPort = 30001;
 const int ProtocolId = 0x99887766;
 const float DeltaTime = 0.25f;
