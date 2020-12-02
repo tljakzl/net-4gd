@@ -22,13 +22,13 @@ namespace n4gd
         void Listen();
         void Connect(const Ipv4& address);
         void Update(float dt);
+        bool SendPacket(const unsigned char data[], int size);
+        int ReceivePacket(unsigned char data[], int size);
 
         bool IsConnecting() const;
         bool ConnectFailed() const;
         bool IsConnected() const;
         bool IsListening() const;
-        bool SendPacket(const unsigned char data[], int size);
-        int ReceivePacket(unsigned char data[], int size);
         Mode GetMode() const;
 
     protected:

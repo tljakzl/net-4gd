@@ -16,7 +16,7 @@ add_library(n4gd
         ${SRC_DIR}/pch.cpp
         ${N4GD_DIR}/Ipv4.h
         ${N4GD_DIR}/UdpSocket.h
-        ${N4GD_DIR}/pch.h include/n4gd/SocketInternal.h include/n4gd/Connection.h src/Connection.cpp)
+        ${N4GD_DIR}/pch.h include/n4gd/SocketInternal.h include/n4gd/Connection.h src/Connection.cpp include/n4gd/Utils.h)
 
 if(WIN32)
     target_link_libraries(n4gd wsock32 ws2_32)
