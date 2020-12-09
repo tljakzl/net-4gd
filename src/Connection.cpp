@@ -79,8 +79,6 @@ namespace n4gd {
             } else if (_state == State::Connected) {
                 std::cout << "Connection timed out\n";
                 ClearData();
-                if (_state == State::Connecting)
-                    _state = State::ConnectFail;
             }
         }
     }

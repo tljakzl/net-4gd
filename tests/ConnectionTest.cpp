@@ -150,9 +150,9 @@ TEST(Connection, Rejoin_Test) {
 
 int main(int argc, char **argv)
 {
+    testing::InitGoogleTest(&argc, argv);
     std::ofstream filestream("log.txt");
     std::cout.rdbuf(filestream.rdbuf());
-    testing::InitGoogleTest(&argc, argv);
 
     return RUN_ALL_TESTS();
 }
