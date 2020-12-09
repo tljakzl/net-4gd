@@ -41,7 +41,7 @@ namespace n4gd {
     }
 
     void Connection::Connect(const Ipv4 &address) {
-        std::cout << "Client connection to: " << address.GetAddressString();
+        std::cout << "Client connection to: " << address.GetAddressString() << std::endl;
         ClearData();
         _mode = Mode::Client;
         _state = State::Connecting;
