@@ -2,6 +2,7 @@
 
 #include <n4gd/Connection.h>
 #include <iostream>
+#include <n4gd/Utils.h>
 
 const int ServerPort = 30000;
 const int ClientPort = 30001;
@@ -11,11 +12,6 @@ const float SendRate = 0.25f;
 const float TimeOut = 10.0f;
 
 #define LOG_CLIENT(x) std::cout <<"[CLIENT] "<< x
-
-void Wait( float seconds )
-{
-    Sleep( (int) ( seconds * 1000.0f ) );
-}
 
 int main(int argc, char* argv[])
 {

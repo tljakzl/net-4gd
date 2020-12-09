@@ -2,6 +2,7 @@
 
 #include <n4gd/Connection.h>
 #include <iostream>
+#include <n4gd/Utils.h>
 
 #define LOG_SERVER(x) std::cout <<"[SERVER] "<< x
 
@@ -11,10 +12,6 @@ const int ProtocolId = 0x99887766;
 const float DeltaTime = 0.25f;
 const float TimeOut = 10.0f;
 
-void Wait( float seconds )
-{
-    Sleep( (int) ( seconds * 1000.0f ) );
-}
 
 int main(int argc, char* argv[])
 {
